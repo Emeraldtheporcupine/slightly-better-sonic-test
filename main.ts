@@ -8,7 +8,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Collision, function (sprite, oth
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (Sonic.vy < 6 && Sonic.vy > -1) {
-        Sonic.vy += -250
+        Sonic.vy += -300
     }
 })
 let Direction = 0
@@ -19,7 +19,7 @@ let Sonic: Sprite = null
 Sonic = sprites.create(assets.image`SonicIdleR`, SpriteKind.Player)
 tiles.setCurrentTilemap(tilemap`level1`)
 scene.cameraFollowSprite(Sonic)
-tiles.placeOnTile(Sonic, tiles.getTileLocation(1, 14))
+tiles.placeOnTile(Sonic, tiles.getTileLocation(1, 62))
 Sonic.ay = 400
 for (let SlopeUpRight of tiles.getTilesByType(assets.tile`myTile`)) {
     mySprite2 = sprites.create(assets.image`rampRight`, SpriteKind.Collision)
