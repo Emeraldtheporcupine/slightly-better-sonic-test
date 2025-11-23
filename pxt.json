@@ -1,0 +1,46 @@
+{
+    "name": "Slightly better Sonic Test",
+    "description": "",
+    "dependencies": {
+        "device": "*"
+    },
+    "files": [
+        "main.blocks",
+        "main.ts",
+        "README.md",
+        "assets.json",
+        "tilemap.g.jres",
+        "tilemap.g.ts",
+        "images.g.jres",
+        "images.g.ts"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "targetVersions": {
+        "target": "2.0.62",
+        "targetId": "arcade"
+    },
+    "supportedTargets": [
+        "arcade"
+    ],
+    "preferredEditor": "blocksprj",
+    "palette": [
+        "#000000",
+        "#000000",
+        "#242490",
+        "#4848B4",
+        "#6C6CD8",
+        "#9090FC",
+        "#FCFCFC",
+        "#B4B4B4",
+        "#909090",
+        "#484848",
+        "#FCB490",
+        "#B46C48",
+        "#FC0000",
+        "#900000",
+        "#480000",
+        "#6ABE30"
+    ]
+}
