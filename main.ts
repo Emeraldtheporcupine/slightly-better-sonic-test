@@ -16,6 +16,7 @@ let FLETgreen: Sprite = null
 let mySprite3: Sprite = null
 let mySprite2: Sprite = null
 let Sonic: Sprite = null
+scene.setBackgroundImage(assets.image`BackDrop`)
 Sonic = sprites.create(assets.image`SonicIdleR`, SpriteKind.Player)
 tiles.setCurrentTilemap(tilemap`level1`)
 scene.cameraFollowSprite(Sonic)
@@ -36,7 +37,9 @@ for (let Place of tiles.getTilesByType(assets.tile`myTile1`)) {
     tiles.placeOnTile(FLETgreen, Place)
     tiles.setTileAt(Place, assets.tile`transparency16`)
 }
-music.play(music.createSong(assets.song`Test`), music.PlaybackMode.LoopingInBackground)
+scroller.scrollBackgroundWithCamera(scroller.CameraScrollMode.BothDirections)
+scroller.setCameraScrollingMultipliers(0.4, 0.4)
+music.play(music.createSong(assets.song`Labyrinth`), music.PlaybackMode.LoopingInBackground)
 game.onUpdate(function () {
     Sonic.vy += 5
     if (controller.right.isPressed()) {
