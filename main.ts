@@ -54,7 +54,7 @@ game.onUpdate(function () {
     if (Direction == 1) {
         Sonic.setImage(assets.image`SonicIdleR`)
     } else if (Direction == -1) {
-        Sonic.setImage(assets.image`SonicIdleL0`)
+        Sonic.setImage(assets.image`SonicIdleL`)
     }
     if (Sonic.vx > 175) {
         Sonic.vx = 175
