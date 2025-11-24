@@ -1,6 +1,7 @@
 namespace SpriteKind {
     export const Collision = SpriteKind.create()
     export const RampLeft = SpriteKind.create()
+    export const Ring = SpriteKind.create()
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Collision, function (sprite, otherSprite) {
     Sonic.y += -2
@@ -11,7 +12,15 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         Sonic.vy += -300
     }
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Ring, function (sprite, otherSprite) {
+    sprites.destroy(otherSprite)
+    music.setVolume(255)
+    music.play(music.createSoundEffect(WaveShape.Square, 1, 2931, 255, 0, 50, SoundExpressionEffect.None, InterpolationCurve.Linear), music.PlaybackMode.UntilDone)
+    music.play(music.createSoundEffect(WaveShape.Square, 1570, 3866, 255, 0, 50, SoundExpressionEffect.None, InterpolationCurve.Linear), music.PlaybackMode.UntilDone)
+    music.play(music.createSoundEffect(WaveShape.Square, 2593, 5000, 255, 0, 50, SoundExpressionEffect.None, InterpolationCurve.Linear), music.PlaybackMode.UntilDone)
+})
 let Direction = 0
+let CollectRing: Sprite = null
 let FLETgreen: Sprite = null
 let mySprite3: Sprite = null
 let mySprite2: Sprite = null
@@ -36,6 +45,17 @@ for (let Place of tiles.getTilesByType(assets.tile`myTile1`)) {
     FLETgreen = sprites.create(assets.image`FlatGREN`, SpriteKind.Collision)
     tiles.placeOnTile(FLETgreen, Place)
     tiles.setTileAt(Place, assets.tile`transparency16`)
+}
+for (let Place of tiles.getTilesByType(assets.tile`myTile3`)) {
+    CollectRing = sprites.create(assets.image`blank`, SpriteKind.Ring)
+    tiles.placeOnTile(CollectRing, Place)
+    tiles.setTileAt(Place, assets.tile`transparency16`)
+    animation.runImageAnimation(
+    CollectRing,
+    assets.animation`Ring`,
+    100,
+    true
+    )
 }
 scroller.scrollBackgroundWithCamera(scroller.CameraScrollMode.BothDirections)
 scroller.setCameraScrollingMultipliers(0.4, 0.4)
