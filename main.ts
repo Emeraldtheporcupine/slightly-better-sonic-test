@@ -14,10 +14,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Ring, function (sprite, otherSprite) {
     sprites.destroy(otherSprite)
-    music.setVolume(255)
-    music.play(music.createSoundEffect(WaveShape.Square, 1, 2931, 255, 0, 50, SoundExpressionEffect.None, InterpolationCurve.Linear), music.PlaybackMode.UntilDone)
-    music.play(music.createSoundEffect(WaveShape.Square, 1570, 3866, 255, 0, 50, SoundExpressionEffect.None, InterpolationCurve.Linear), music.PlaybackMode.UntilDone)
-    music.play(music.createSoundEffect(WaveShape.Square, 2593, 5000, 255, 0, 50, SoundExpressionEffect.None, InterpolationCurve.Linear), music.PlaybackMode.UntilDone)
+    music.setVolume(50)
+    music.play(music.createSong(assets.song`ring`), music.PlaybackMode.InBackground)
 })
 let Direction = 0
 let CollectRing: Sprite = null
@@ -56,6 +54,7 @@ for (let Place of tiles.getTilesByType(assets.tile`myTile3`)) {
     100,
     true
     )
+    CollectRing.setScale(0.75, ScaleAnchor.Middle)
 }
 scroller.scrollBackgroundWithCamera(scroller.CameraScrollMode.BothDirections)
 scroller.setCameraScrollingMultipliers(0.4, 0.4)
